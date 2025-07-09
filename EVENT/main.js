@@ -33,31 +33,31 @@ function EnterClear() {
 
 // 1.	Alert ASCII Code of any key pressed and detect whether it is alt key or ctrl key or shift key.
 
-// document.addEventListener("keydown", (e) => {
-//     if (e.altKey) {
-//         alert(`${e.key} ==> ${e.which}`);
-//     } else if (e.ctrlKey) {
-//         alert(`${e.key} ==> ${e.which}`);
-//     } else if (e.shiftKey) {
-//         alert(`${e.key} ==> ${e.which}`);
-//     } else {
-//         alert(`${e.key} ==> ${e.which}`);
-//     }
-// })
+document.addEventListener("keydown", (e) => {
+    if (e.altKey) {
+        alert(`${e.key} ==> alt key`);
+    } else if (e.ctrlKey) {
+        alert(`${e.key} ==> ctrl key`);
+    } else if (e.shiftKey) {
+        alert(`${e.key} ==> shift key`);
+    } else {
+        alert(`${e.key} ==> ${e.which}`);
+    }
+})
 
 // ========================================================================================================================
 
 // 2-2.	Make your own input type number that accepts numbers only. “using event object”
 
-// const input = document.getElementById("numberOnly");
+const input = document.getElementById("numberOnly");
 
-// input.addEventListener("keydown", function (e) {
+input.addEventListener("keydown", function (e) {
 
-//     const char = e.key;
+    const char = e.key;
 
-//     if (!/[0-9]/.test(char) && char !== "Backspace" && char !== "ArrowLeft" && char !== "ArrowRight" && char !== "Delete" && char !== "Tab") {
+    if (!/[0-9]/.test(char) && char !== "Backspace" && char !== "ArrowLeft" && char !== "ArrowRight" && char !== "Delete" && char !== "Tab") {
 
-//         e.preventDefault();
-//         alert("enter number");
-//     }
-// });
+        e.preventDefault();
+        alert("wrong! please enter number");
+    }
+});

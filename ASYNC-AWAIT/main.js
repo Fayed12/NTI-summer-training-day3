@@ -1,25 +1,28 @@
-async function products(numberOfProducts) {
+async function posts(numberOfposts) {
     try {
-        let fetchJson = await fetch("./main.json");
+        let fetchJson = await fetch("https://jsonplaceholder.typicode.com/users/");
         let data = await fetchJson.json();
 
-        let productsInCard = Array.from(data)
-        productsInCard.length = numberOfProducts;
+        let postsInCard = Array.from(data)
+        postsInCard.length = numberOfposts;
         
-        productsInCard.forEach((product) => {
-            console.log(product)
+        postsInCard.forEach((post) => {
             let box = document.createElement("div");
             box.className = "box";
 
-            box.innerHTML = `<div class="title">
-            <h2>${product.title}</h2>
+            box.innerHTML = `
+            <div class="header">
+            <span>${post.id}</span>
+            </div>
+            <div class="title">
+            <h2>${post.name}</h2>
             </div>
             <div class="price">
-                <span>$${product.price}</span>
+                name: <span>${post.username}</span>
             </div>
             <div class="description">
                 <p style="font-size: 12px;">
-                    ${product.description}
+                    Email: ${post.email}
                 </p>
             </div>`
 
@@ -30,35 +33,38 @@ async function products(numberOfProducts) {
     }
 }
 
-products(5)
+posts(5)
 
 // ==================================================================
 
 // by promise
 
-// function products(numberOfProducts) {
-//     fetch("./main.json")
+// function Posts(numberOfposts) {
+//     fetch("https://jsonplaceholder.typicode.com/users/")
 //         .then(response => response.json())
 //         .then(data => {
-//             const productsInCard = Array.from(data);
-//             productsInCard.length = numberOfProducts;
+//             const PostInCard = Array.from(data);
+//             PostInCard.length = numberOfposts;
 
 //             // create the cards
 
-//             productsInCard.forEach((product) => {
-//                 console.log(product)
+//             PostInCard.forEach((post) => {
 //                 let box = document.createElement("div");
 //                 box.className = "box";
 
-//                 box.innerHTML = `<div class="title">
-//                 <h2>${product.title}</h2>
+//                 box.innerHTML = `
+//                 <div class="header">
+//                 <span>${post.id}</span>
+//                 </div>
+//                 <div class="title">
+//                 <h2>${post.name}</h2>
 //                 </div>
 //                 <div class="price">
-//                     <span>$${product.price}</span>
+//                     name: <span>${post.username}</span>
 //                 </div>
 //                 <div class="description">
 //                     <p style="font-size: 12px;">
-//                         ${product.description}
+//                         Email: ${post.email}
 //                     </p>
 //                 </div>`
 
@@ -70,4 +76,4 @@ products(5)
 //         });
 // }
 
-// products(5);
+// Posts(8);
